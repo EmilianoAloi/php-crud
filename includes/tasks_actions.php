@@ -2,6 +2,9 @@
 
 include("db.php");
 
+
+// POST method to save task
+
 if (isset($_POST["save_task"])) {
 
     $title = $_POST["title"];
@@ -12,4 +15,9 @@ if (isset($_POST["save_task"])) {
     if (!$result) {
         die("Query failed: " . mysqli_error($conn));
     };
+
+    $_SESSION['message'] = "Tarea guardada satisfactoriamente";
+    $_SESSION['message_type'] = "success";
+
+    header("Location: ../index.php");
 }
